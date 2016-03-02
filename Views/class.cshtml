@@ -1,0 +1,28 @@
+<h2>Students in @Model["class"].GetName()</h2>
+
+<ul>
+  @{ if (Model["classStudents"].Count != 0) {
+    @foreach (var student in Model["classStudents"]){
+      <li>@student.GetName()</li>
+    }
+  }
+}
+
+</ul>
+
+<h4>Add a student to this class:</h4>
+<form action='/class/add_student' method='post'>
+  <input id='class-id' name='class-id' type='hidden' value='@Model["class"].GetId()'>
+  <label for='student-id'>Select a student</label>
+  <select id='student-id' name='student-id' type='text'>
+    @foreach (var student in @Model["allStudents"])
+    {
+      <option value='@student.GetId()'>@student.GetName()</option>
+    }
+  </select>
+  <button type='submit'>Add</button>
+</form>
+
+
+
+<a href="/classes">Back</a>

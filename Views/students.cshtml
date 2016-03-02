@@ -1,0 +1,12 @@
+<h1> Students </h1>
+
+<ul>
+@{ if (Model.Count != null) {
+  @foreach (var student in Model) {
+     <li>@student.GetName()</li>
+    }
+  }
+}
+</ul>
+
+<a href="/"> Go Back</a>
